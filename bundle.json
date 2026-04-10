@@ -1,0 +1,54 @@
+
+{
+    "name": "@ohos/opus",
+    "description": "opus support",
+    "version": "3.1",
+    "license": "Apache License 2.0",
+    "publishAs": "code-segment",
+    "segment": {
+      "destPath": "third_party/opus"
+    },
+    "dirs": {},
+    "scripts": {},
+    "component": {
+      "name": "opus",
+      "subsystem": "open_source",
+      "syscap": [],
+      "features": [],
+      "adapted_system_type": [ "standard" ],
+      "rom": "10000KB",
+      "ram": "10000KB",
+      "hisysevent_config": [],
+      "deps": {
+        "components": [
+          "c_utils",
+          "hilog",
+          "ipc",
+          "media_foundation",
+          "av_codec"
+        ],
+        "third_party": []
+      },
+      "build": {
+        "inner_kits": [
+          {
+            "type": "so",
+            "name": "//third_party/opus:opus_codec",
+            "header": {
+              "header_files": [],
+              "header_base": "//third_party/opus/include"
+            }
+          }
+      ],
+      "test": [
+      ],
+        "group_type": {
+          "base_group": [],
+          "fwk_group": [
+            "//third_party/opus:opus_codec"
+          ],
+          "service_group": []
+        }
+      }
+    }
+  }
