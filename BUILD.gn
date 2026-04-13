@@ -2,11 +2,11 @@ import("//build/ohos.gni")
 
 config("av_opus_package_include") {
   include_dirs = [
-    "//vendor/open_source/opus/include",
-    "//vendor/open_source/opus/celt",
-    "//vendor/open_source/opus/silk",
-    "//vendor/open_source/opus/silk/fixed",
-    "//vendor/open_source/opus/src",
+    "//third_party/opus/include",
+    "//third_party/opus/celt",
+    "//third_party/opus/silk",
+    "//third_party/opus/silk/fixed",
+    "//third_party/opus/src",
   ]
   
   cflags = [
