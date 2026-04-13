@@ -12,7 +12,7 @@
     "scripts": {},
     "component": {
       "name": "opus",
-      "subsystem": "open_source",
+      "subsystem": "thirdparty",
       "syscap": [],
       "features": [],
       "adapted_system_type": [ "standard" ],
