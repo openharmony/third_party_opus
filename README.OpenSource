@@ -1,0 +1,9 @@
+[
+  {
+    "Name": "opus",
+    "License": "BSD-3-Clause",
+    "LicenseFile": "COPYING",
+    "Version": "x.x.x",
+    "UpstreamURL": "https://www.opus-codec.org/"
+  }
+]
