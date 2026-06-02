@@ -2,7 +2,7 @@
 {
     "name": "@ohos/opus",
     "description": "Opus audio codec library",
-    "version": "1.5.2",
+    "version": "1.6.1",
     "license": "BSD",
     "publishAs": "code-segment",
     "segment": {

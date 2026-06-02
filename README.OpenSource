@@ -3,7 +3,7 @@
     "Name": "opus",
     "License": "BSD-3-Clause",
     "LicenseFile": "COPYING",
-    "Version": "x.x.x",
+    "Version": "1.6.1",
     "UpstreamURL": "https://www.opus-codec.org/"
   }
 ]
