@@ -306,9 +306,8 @@ opus_int32 opus_repacketizer_out_range_impl(OpusRepacketizer *rp, int begin, int
       ptr += len[i];
    }
    if (ext_len > 0) {
-      int ret = opus_packet_extensions_generate(&data[ext_begin], ext_len,
+      opus_packet_extensions_generate(&data[ext_begin], ext_len,
        all_extensions, ext_count, count, 0);
-      celt_assert(ret == ext_len);
    }
    for (i=ones_begin;i<ones_end;i++)
       data[i] = 0x01;

@@ -1,0 +1,50 @@
+
+{
+    "name": "@ohos/opus",
+    "description": "Opus audio codec library",
+    "version": "1.5.2",
+    "license": "BSD",
+    "publishAs": "code-segment",
+    "segment": {
+      "destPath": "third_party/opus"
+    },
+    "dirs": {},
+    "scripts": {},
+    "component": {
+      "name": "opus",
+      "subsystem": "thirdparty",
+      "syscap": [],
+      "features": [],
+      "adapted_system_type": [ "standard" ],
+      "rom": "500KB",
+      "ram": "100KB",
+      "hisysevent_config": [],
+      "deps": {
+        "components": [
+          "c_utils"
+        ],
+        "third_party": []
+      },
+      "build": {
+        "inner_kits": [
+          {
+            "type": "so",
+            "name": "//third_party/opus:opus_codec",
+            "header": {
+              "header_files": [],
+              "header_base": "//third_party/opus/include"
+            }
+          }
+      ],
+      "test": [
+      ],
+        "group_type": {
+          "base_group": [],
+          "fwk_group": [
+            "//third_party/opus:opus_codec"
+          ],
+          "service_group": []
+        }
+      }
+    }
+  }
