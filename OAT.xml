@@ -33,6 +33,12 @@
             <policyitem type="copyright" name="Xiph.Org" path=".*\.c|.*\.h|.*\.cpp|.*\.hpp" desc="Copyright header must include Xiph.Org Foundation copyright notice." rule="must" group="defaultGroup" />
             <!-- Naming compatibility check: ensure the repository contains necessary documentation files -->
             <policyitem type="filename" name="README, README.OpenSource" path="projectroot" desc="The repository must contain README and README.OpenSource files." rule="must" group="defaultGroup" />
+            <!-- Archive files (tar) in DNN evaluation directory are legitimate test vector archives -->
+            <policyitem type="filetype" name="archive" path="dnn/torch/osce/stndrd/evaluation/.*" desc="DNN model evaluation uses tar archives to store test vectors, required for correctness validation." rule="may" group="defaultGroup" />
+            <!-- README documentation image is a binary file that is intentionally included -->
+            <policyitem type="filetype" name="binary" path="zh-cn_image_opus\.png" desc="README documentation figure for OpenHarmony integration." rule="may" group="defaultGroup" />
+            <!-- LICENSE_PLEASE_READ.txt is a patent declaration referencing IETF IPR statements, not a standard software license -->
+            <policyitem type="compatibility" name="*" path="LICENSE_PLEASE_READ\.txt" desc="Patent declaration referencing IETF IPR statements; project license is defined in COPYING." rule="may" group="defaultGroup" />
         </policylist>
         <!-- ===================================================== -->
         <!-- File filter configuration, exclude files or directories not to check -->
@@ -43,13 +49,24 @@
                 <filteritem type="filepath" name=".git/.*" desc="Exclude Git metadata directory."/>
                 <filteritem type="filepath" name=".idea/.*" desc="Exclude IDE configuration files."/>
                 <filteritem type="filepath" name=".vscode/.*" desc="Exclude VS Code configuration files."/>
+                <filteritem type="filepath" name="LICENSE_PLEASE_READ.txt" desc="Patent declaration referencing IETF IPR statements, not a standard software license."/>
+                <filteritem type="filepath" name="dnn/torch/osce/stndrd/evaluation/.*" desc="DNN model evaluation directory containing test vector archives."/>
+                <filteritem type="filepath" name="zh-cn_image_opus.png" desc="README documentation figure."/>
                 <filteritem type="filename" name=".*\.log" desc="Exclude log files."/>
                 <filteritem type="filename" name=".*\.tmp" desc="Exclude temporary files."/>
+                <filteritem type="filename" name="update_version" desc="opus default description"/>
+                <filteritem type="filename" name="dred_vectors.sh" desc="Test shell script for DRED test vectors, contains no licensable content."/>
             </filefilter>
             <!-- Filter for binary file type policy -->
             <filefilter name="binaryFileTypePolicyFilter" desc="Filters for binary file type policies">
                 <filteritem type="filepath" name=".*\.png|.*\.jpg|.*\.jpeg|.*\.gif|.*\.svg|.*\.ico" desc="Exclude image files from binary type check."/>
-                <filteritem type="filepath" name=".*\.pdf|.*\.doc|.*\.docx|.*\.xls|.*\.xlsx" desc="Exclude PDF and Office documents from binary type check."/>
+                <filteritem type="filepath" name=".*\.pdf|.*\.doc|.*\.docx|.*\.xls|.*\.xlsx|.*\.tar|.*\.txt" desc="Exclude PDF and Office documents from binary type check."/>
+                <filteritem type="filepath" name="dnn/torch/osce/stndrd/evaluation/nbwe_dcr1\.tar" desc="DNN model evaluation test vector archive."/>
+                <filteritem type="filepath" name="dnn/torch/osce/stndrd/evaluation/tests/NBWE_ACR\.tar" desc="DNN model evaluation test vector archive."/>
+                <filteritem type="filepath" name="dnn/torch/osce/stndrd/evaluation/tests/dred_journal\.tar" desc="DNN model evaluation test vector archive."/>
+                <filteritem type="filepath" name="dnn/torch/osce/stndrd/evaluation/tests/lace\.tar" desc="DNN model evaluation test vector archive."/>
+                <filteritem type="filepath" name="dnn/torch/osce/stndrd/evaluation/tests/nolace\.tar" desc="DNN model evaluation test vector archive."/>
+                <filteritem type="filepath" name="zh-cn_image_opus\.png" desc="README documentation figure."/>
             </filefilter>
             <!-- Filter for license header check policy -->
             <filefilter name="licenseFileNamePolicyFilter" desc="Filters for license file name policies">
@@ -61,9 +78,6 @@
                 <filteritem type="filepath" name="testdata/.*" desc="Exclude test data files."/>
                 <filteritem type="filepath" name="third_party/.*" desc="Exclude third-party source code embedded in the repository."/>
             </filefilter>
-            <filefilter name="binaryFileTypePolicyFilter" desc="Invalid File Type">
- 	            <filteritem type="filepath" name="zh-cn_image_opus.png" desc="README figures"/>
- 	         </filefilter>
         </filefilterlist>
     </oatconfig>
 </configuration>
