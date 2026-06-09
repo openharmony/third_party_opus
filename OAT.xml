@@ -1,78 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
- Copyright (c) 2026 OpenHarmony Project
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+  Copyright (c) 2026 OpenHarmony Project
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
 
-     http://www.apache.org/licenses/LICENSE-2.0
+    http://www.apache.org/licenses/LICENSE-2.0
 
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
 
- This is the configuration file template for OpenHarmony OSS Audit Tool.
- Please copy it to your project root dir and modify it refer to OpenHarmony/tools_oat/README.
- All configurations in this file will be merged to OAT-Default.xml.
+  This is the configuration file template for OpenHarmony OSS Audit Tool.
+  Please copy it to your project root dir and modify it refer to OpenHarmony/tools_oat/README.
+  All configurations in this file will be merged to OAT-Default.xml.
 -->
 <configuration>
     <oatconfig>
-        <!-- ===================================================== -->
-        <!-- License file configuration                            -->
-        <!-- ===================================================== -->
-        <!-- opus uses BSD-3-Clause license, the license file is COPYING -->
         <licensefile>COPYING</licensefile>
         <policylist>
-            <!-- License compatibility check: the entire repository uses BSD-3-Clause, compatible -->
-            <policyitem type="compatibility" name="BSD-3-Clause" path=".*" desc="Opus codec is licensed under BSD 3-Clause License, which is compatible with OpenHarmony." rule="may" group="defaultGroup" />
-            <!-- License header check: all source files must include the BSD-3-Clause license header -->
-            <policyitem type="license" name="BSD-3-Clause" path=".*\.c|.*\.h|.*\.cpp|.*\.hpp" desc="Source code files must include the BSD-3-Clause license header." rule="must" group="defaultGroup" />
-            <!-- Copyright header check: all source files must include the Xiph.Org copyright notice -->
-            <policyitem type="copyright" name="Xiph.Org" path=".*\.c|.*\.h|.*\.cpp|.*\.hpp" desc="Copyright header must include Xiph.Org Foundation copyright notice." rule="must" group="defaultGroup" />
-            <!-- Naming compatibility check: ensure the repository contains necessary documentation files -->
-            <policyitem type="filename" name="README, README.OpenSource" path="projectroot" desc="The repository must contain README and README.OpenSource files." rule="must" group="defaultGroup" />
-            <!-- Archive files (tar) in DNN evaluation directory are legitimate test vector archives -->
-            <policyitem type="filetype" name="archive" path="dnn/torch/osce/stndrd/evaluation/.*" desc="DNN model evaluation uses tar archives to store test vectors, required for correctness validation." rule="may" group="defaultGroup" />
-            <!-- LICENSE_PLEASE_READ.txt is a patent declaration referencing IETF IPR statements, not a standard software license -->
-            <policyitem type="compatibility" name="*" path="LICENSE_PLEASE_READ\.txt" desc="Patent declaration referencing IETF IPR statements; project license is defined in COPYING." rule="may" group="defaultGroup" />
+            <policyitem type="compatibility" name="BSD-3-Clause" path=".*" desc="BSD-3-Clause is compatible with OpenHarmony." rule="may" group="defaultGroup" />
+            <policyitem type="license" name="BSD-3-Clause" path=".*\.c|.*\.h|.*\.cpp|.*\.hpp" desc="Source files must include BSD-3-Clause license header." rule="must" group="defaultGroup" />
+            <policyitem type="copyright" name="Xiph.Org" path=".*\.c|.*\.h|.*\.cpp|.*\.hpp" desc="Source files must include Xiph.Org copyright notice." rule="must" group="defaultGroup" />
+            <policyitem type="filename" name="README, README.OpenSource" path="projectroot" desc="Required doc files." rule="must" group="defaultGroup" />
         </policylist>
-        <!-- ===================================================== -->
-        <!-- File filter configuration, exclude files or directories not to check -->
-        <!-- ===================================================== -->
         <filefilterlist>
-            <!-- Default filter: exclude .git directories, IDE config files, and auto-generated test files -->
             <filefilter name="defaultFilter" desc="Files not to check">
-                <filteritem type="filepath" name=".git/.*" desc="Exclude Git metadata directory."/>
-                <filteritem type="filepath" name=".idea/.*" desc="Exclude IDE configuration files."/>
-                <filteritem type="filepath" name=".vscode/.*" desc="Exclude VS Code configuration files."/>
-                <filteritem type="filepath" name="LICENSE_PLEASE_READ.txt" desc="Patent declaration referencing IETF IPR statements, not a standard software license."/>
-                <filteritem type="filepath" name="dnn/torch/osce/stndrd/evaluation/.*" desc="DNN model evaluation directory containing test vector archives."/>
-                <filteritem type="filename" name=".*\.log" desc="Exclude log files."/>
-                <filteritem type="filename" name=".*\.tmp" desc="Exclude temporary files."/>
-                <filteritem type="filename" name="update_version" desc="opus default description"/>
-                <filteritem type="filename" name="dred_vectors.sh" desc="Test shell script for DRED test vectors, contains no licensable content."/>
-            </filefilter>
-            <!-- Filter for binary file type policy -->
-            <filefilter name="binaryFileTypePolicyFilter" desc="Filters for binary file type policies">
-                <filteritem type="filepath" name=".*\.png|.*\.jpg|.*\.jpeg|.*\.gif|.*\.svg|.*\.ico" desc="Exclude image files from binary type check."/>
-                <filteritem type="filepath" name=".*\.pdf|.*\.doc|.*\.docx|.*\.xls|.*\.xlsx|.*\.tar|.*\.txt" desc="Exclude PDF and Office documents from binary type check."/>
-                <filteritem type="filepath" name="dnn/torch/osce/stndrd/evaluation/nbwe_dcr1\.tar" desc="DNN model evaluation test vector archive."/>
-                <filteritem type="filepath" name="dnn/torch/osce/stndrd/evaluation/tests/NBWE_ACR\.tar" desc="DNN model evaluation test vector archive."/>
-                <filteritem type="filepath" name="dnn/torch/osce/stndrd/evaluation/tests/dred_journal\.tar" desc="DNN model evaluation test vector archive."/>
-                <filteritem type="filepath" name="dnn/torch/osce/stndrd/evaluation/tests/lace\.tar" desc="DNN model evaluation test vector archive."/>
-                <filteritem type="filepath" name="dnn/torch/osce/stndrd/evaluation/tests/nolace\.tar" desc="DNN model evaluation test vector archive."/>
-            </filefilter>
-            <!-- Filter for license header check policy -->
-            <filefilter name="licenseFileNamePolicyFilter" desc="Filters for license file name policies">
-                <filteritem type="filepath" name=".*\.txt" desc="Text files may contain license information."/>
-                <filteritem type="filepath" name=".*\.md" desc="Markdown files may contain license information."/>
-            </filefilter>
-            <!-- Filter for README file check policy -->
-            <filefilter name="readmeOpenSourcefileNamePolicyFilter" desc="Filters for README.OpenSource file policies">
-                <filteritem type="filepath" name="testdata/.*" desc="Exclude test data files."/>
-                <filteritem type="filepath" name="third_party/.*" desc="Exclude third-party source code embedded in the repository."/>
+                <filteritem type="filename" name="update_version" desc="Opus version script, no licensable content."/>
+                <filteritem type="filename" name="dred_vectors.sh" desc="Test script for DRED test vectors, no licensable content."/>
+                <filteritem type="filename" name="Makefile.am" desc="Automake build configuration, no licensable content."/>
+                <filteritem type="filepath" name="LICENSE_PLEASE_READ.txt" desc="Patent declaration referencing IETF IPR statements, not a software license."/>
+                <filteritem type="filepath" name="dnn/torch/osce/stndrd/evaluation/nbwe_dcr1.tar" desc="DNN test vector archive."/>
+                <filteritem type="filepath" name="dnn/torch/osce/stndrd/evaluation/tests/NBWE_ACR.tar" desc="DNN test vector archive."/>
+                <filteritem type="filepath" name="dnn/torch/osce/stndrd/evaluation/tests/dred_journal.tar" desc="DNN test vector archive."/>
+                <filteritem type="filepath" name="dnn/torch/osce/stndrd/evaluation/tests/lace.tar" desc="DNN test vector archive."/>
+                <filteritem type="filepath" name="dnn/torch/osce/stndrd/evaluation/tests/nolace.tar" desc="DNN test vector archive."/>
             </filefilter>
         </filefilterlist>
     </oatconfig>
