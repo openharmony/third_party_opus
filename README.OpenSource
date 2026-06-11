@@ -3,7 +3,10 @@
     "Name": "opus",
     "License": "BSD-3-Clause",
     "LicenseFile": "COPYING",
-    "Version": "1.6.1",
+    "Version": "v1.6.1",
+    "Owner": "chenxin666@huawei.com",
     "UpstreamURL": "https://www.opus-codec.org/"
+    "Description": "Opus is a totally open, royalty-free, highly versatile audio codec.",
+    "Dependencies": ["c_utils"]
   }
 ]
