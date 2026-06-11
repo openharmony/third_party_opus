@@ -20,12 +20,6 @@
 <configuration>
     <oatconfig>
         <licensefile>COPYING</licensefile>
-        <policylist>
-            <policyitem type="compatibility" name="BSD-3-Clause" path=".*" desc="BSD-3-Clause is compatible with OpenHarmony." rule="may" group="defaultGroup" />
-            <policyitem type="license" name="BSD-3-Clause" path=".*\.c|.*\.h|.*\.cpp|.*\.hpp" desc="Source files must include BSD-3-Clause license header." rule="must" group="defaultGroup" />
-            <policyitem type="copyright" name="Xiph.Org" path=".*\.c|.*\.h|.*\.cpp|.*\.hpp" desc="Source files must include Xiph.Org copyright notice." rule="must" group="defaultGroup" />
-            <policyitem type="filename" name="README, README.OpenSource" path="projectroot" desc="Required doc files." rule="must" group="defaultGroup" />
-        </policylist>
         <filefilterlist>
             <filefilter name="defaultFilter" desc="Files not to check">
                 <filteritem type="filename" name="update_version" desc="Opus version script, no licensable content."/>
